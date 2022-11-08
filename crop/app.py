@@ -52,11 +52,11 @@ def crop(filename):
 
 
 def handler(event, context):
-    s3 = boto3.client("s3")
+    # s3 = boto3.client("s3")
     os.chdir("/tmp/")
-    os.environ["IMAGEIO_FFMPEG_EXE"] = "/tmp"
+    # os.environ["IMAGEIO_FFMPEG_EXE"] = "/tmp"
 
-    s3.download_file(BUCKET_NAME, "ffmpeg", "/tmp/ffmpeg")
+    # s3.download_file(BUCKET_NAME, "ffmpeg", "/tmp/ffmpeg")
     # Stage I: Scaling Down the video
     # scaledDownFilename = scaleDown(event["filename"])
     # Stage II: Cropping the Video
