@@ -1,3 +1,4 @@
+import urllib.parse
 import moviepy.editor as mp
 import moviepy.video as mp_vid
 import boto3
@@ -56,11 +57,15 @@ def handler(event, context):
     os.chdir("/tmp/")
     # os.environ["IMAGEIO_FFMPEG_EXE"] = "/tmp"
 
-    # s3.download_file(BUCKET_NAME, "ffmpeg", "/tmp/ffmpeg")
-    # Stage I: Scaling Down the video
-    # scaledDownFilename = scaleDown(event["filename"])
-    # Stage II: Cropping the Video
-    crop(event["filename"])
+    print("EVENT:")
+    print(event)
+
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+
+    print("bucket", bucket, "key", key)
+
+    crop(key.strip(".mp4"))
 
     return {
         "statusCode": 200,

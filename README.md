@@ -14,7 +14,11 @@ Note: If you receive an error using the AWS CLI, make sure that you have the lat
 3. After the build completes, tag your image so you can push the image to this repository:
 
 ```docker tag video-processing-app:latest 075165449331.dkr.ecr.us-west-2.amazonaws.com/video-processing-app:latest```
+```docker tag video-processing-scaledown:latest 075165449331.dkr.ecr.us-west-2.amazonaws.com/video-processing-scaledown:latest```
+```docker tag video-processing-crop:latest 075165449331.dkr.ecr.us-west-2.amazonaws.com/video-processing-crop:latest```
 
 4. Run the following command to push this image to your newly created AWS repository:
 
 ```docker push 075165449331.dkr.ecr.us-west-2.amazonaws.com/video-processing-app:latest```
+```docker push 075165449331.dkr.ecr.us-west-2.amazonaws.com/video-processing-scaledown:latest```
+```docker push 075165449331.dkr.ecr.us-west-2.amazonaws.com/video-processing-crop:latest```
