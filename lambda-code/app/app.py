@@ -2,6 +2,7 @@ import moviepy.editor as mp
 import moviepy.video as mp_vid
 import boto3
 import os
+import json
 
 BUCKET_NAME = 'ffmpeg-profile' # replace with your bucket name
 # KEY = 'ElephantsDream' # replace with your object key
