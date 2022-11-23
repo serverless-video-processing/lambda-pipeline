@@ -40,18 +40,21 @@ def write_to_s3(filename, ext):
     s3 = boto3.resource("s3")
     s3.Bucket(BUCKET_NAME).put_object(Key=filename+ext, Body=encoded_string)
 
-def crop(filename):
+def mirror(filename, dir):
     filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
-    outputFilename = filename + "_cropped"
-    mp_vid.fx.all.crop(stream, CROP, CROP, CROP//2, CROP//2)
-    # Stage IV: Saving
+    if dir=='X':
+        stream=mp_vid.fx.all.mirror_x(stream)
+        outputFilename = filename + "_mirrorx"
+    else:
+        stream=mp_vid.fx.all.mirror_y(stream)
+        outputFilename = filename + "_mirrory"
     stream.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")
-    return outputFilename
+    return outputFilename 
 
 def pipeline(filename):
-    croppedDownFilename = crop(filename)
+        mirryFilename = mirror(filename, 'Y')
 
 def handler(event, context):
 
@@ -61,5 +64,5 @@ def handler(event, context):
 
     return {
         "statusCode": 200,
-        "body": json.dumps("Lambda Completed: Scale Down"),
+        "body": json.dumps("Lambda Completed: Mirrored on Y"),
     }

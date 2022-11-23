@@ -40,18 +40,25 @@ def write_to_s3(filename, ext):
     s3 = boto3.resource("s3")
     s3.Bucket(BUCKET_NAME).put_object(Key=filename+ext, Body=encoded_string)
 
-def crop(filename):
-    filename=read_from_s3(filename, ".mp4")
-    stream = mp.VideoFileClip(filename+".mp4")
-    outputFilename = filename + "_cropped"
-    mp_vid.fx.all.crop(stream, CROP, CROP, CROP//2, CROP//2)
-    # Stage IV: Saving
-    stream.write_videofile(outputFilename+".mp4")
-    write_to_s3(outputFilename, ".mp4")
-    return outputFilename
+def watermark(filename, logoname):
+    logoname=read_from_s3(logoname, ".png")
+    filename = read_from_s3(filename, ".mp4")
+    video = mp.VideoFileClip(filename+".mp4")
+
+    logo = (mp.ImageClip(logoname+".png")
+            .set_duration(video.duration)
+            .resize(height=50) # if you need to resize...
+            .margin(right=8, top=8, opacity=0) # (optional) logo-border padding
+            .set_pos(("right","bottom")))
+
+    final = mp.CompositeVideoClip([video, logo])
+    outputFileName= filename+"_watermarked"
+    final.write_videofile(outputFileName+".mp4")
+    write_to_s3(outputFileName, ".mp4")
+    return outputFileName 
 
 def pipeline(filename):
-    croppedDownFilename = crop(filename)
+    waterFilename = watermark(filename, LOGO) 
 
 def handler(event, context):
 
@@ -61,5 +68,5 @@ def handler(event, context):
 
     return {
         "statusCode": 200,
-        "body": json.dumps("Lambda Completed: Scale Down"),
+        "body": json.dumps("Lambda Completed: Watermark"),
     }

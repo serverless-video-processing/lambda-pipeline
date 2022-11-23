@@ -1,4 +1,3 @@
-import urllib.parse
 import moviepy.editor as mp
 import moviepy.video as mp_vid
 import boto3
@@ -40,26 +39,24 @@ def write_to_s3(filename, ext):
     s3 = boto3.resource("s3")
     s3.Bucket(BUCKET_NAME).put_object(Key=filename+ext, Body=encoded_string)
 
-def crop(filename):
-    filename=read_from_s3(filename, ".mp4")
+def changeVolume(filename, factor):
+
+    filename = read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
-    outputFilename = filename + "_cropped"
-    mp_vid.fx.all.crop(stream, CROP, CROP, CROP//2, CROP//2)
-    # Stage IV: Saving
+    stream = stream.volumex(factor)
+    outputFilename = filename + "_changevol"
     stream.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")
-    return outputFilename
+    return outputFilename    
 
 def pipeline(filename):
-    croppedDownFilename = crop(filename)
+    # Stage I: Change Volume
+    volFilename = changeVolume(filename, 2.0)
 
 def handler(event, context):
-
-    os.chdir("/tmp/")
-    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
-    pipeline(key.strip(".mp4"))
-
+    os.chdir('/tmp/')
+    pipeline(event["filename"])
     return {
-        "statusCode": 200,
-        "body": json.dumps("Lambda Completed: Scale Down"),
+        'statusCode': 200,
+        'body': json.dumps('Lambda Completed: Volume Change')
     }

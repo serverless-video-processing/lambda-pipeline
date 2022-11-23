@@ -40,18 +40,17 @@ def write_to_s3(filename, ext):
     s3 = boto3.resource("s3")
     s3.Bucket(BUCKET_NAME).put_object(Key=filename+ext, Body=encoded_string)
 
-def crop(filename):
+def blackWhite(filename):
     filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
-    outputFilename = filename + "_cropped"
-    mp_vid.fx.all.crop(stream, CROP, CROP, CROP//2, CROP//2)
-    # Stage IV: Saving
+    outputFilename = filename + "_bw"
+    stream=mp_vid.fx.all.blackwhite(stream)
     stream.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")
-    return outputFilename
+    return outputFilename  
 
 def pipeline(filename):
-    croppedDownFilename = crop(filename)
+    bwFilename = blackWhite(filename)
 
 def handler(event, context):
 
