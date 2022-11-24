@@ -11,26 +11,13 @@ RESIZE = 180
 CROP = 128
 
 def read_from_s3(filename, ext):
-    s3 = boto3.resource('s3')
-    bucket = s3.Bucket(BUCKET_NAME)
-    for object in bucket.objects.all():
-        key = object.key
-        print(key)
-        if key == filename+ext:
-            body = object.get()['Body'].read()
-            with open(filename + ext, "wb") as binary_file:
-                binary_file.write(body)
-            return filename
-    return ""
-
-# def read_from_s3(filename, ext):
-#     session = boto3.Session()
-#     s3 = session.client('s3')
-#     s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=KEY)
-#     body = s3_object['Body'].read()
-#     with open(filename + ext, "wb") as binary_file:
-#         binary_file.write(body)
-#     return filename
+    session = boto3.Session()
+    s3 = session.client('s3')
+    s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=filename + ext)
+    body = s3_object['Body'].read()
+    with open(filename + ext, "wb") as binary_file:
+        binary_file.write(body)
+    return filename
 
 def write_to_s3(filename, ext):
     with open(filename+ext, "rb") as f:
