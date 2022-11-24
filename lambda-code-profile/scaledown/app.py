@@ -49,10 +49,7 @@ def pipeline(filename):
 def handler(event, context):
 
     os.chdir("/tmp/")
-    key = urllib.parse.unquote_plus(
-        event["Records"][0]["s3"]["object"]["key"], encoding="utf-8"
-    )
-    pipeline(key.strip(".mp4"))
+    pipeline(event['filename'])
 
     return {
         "statusCode": 200,

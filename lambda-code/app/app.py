@@ -75,16 +75,6 @@ def watermark(filename, logoname):
     write_to_s3(outputFileName, ".mp4")
     return outputFileName
 
-def changeVolume(filename, factor):
-
-    filename = read_from_s3(filename, ".mp4")
-    stream = mp.VideoFileClip(filename+".mp4")
-    stream = stream.volumex(factor)
-    outputFilename = filename + "_changevol"
-    stream.write_videofile(outputFilename+".mp4")
-    write_to_s3(outputFilename, ".mp4")
-    return outputFilename    
-
 def blackWhite(filename):
     filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
@@ -105,28 +95,25 @@ def rotate(filename, angle):
 
 def pipeline():
 
-    # Stage I: Change Volume
-    volFilename = changeVolume(KEY, 2.0)
+    # Stage I: Scaling Down the video
+    scaledDownFilename = scaleDown(KEY)
 
-    # Stage II: Scaling Down the video
-    scaledDownFilename = scaleDown(volFilename)
-
-    # Stage III: Cropping the Video
+    # Stage II: Cropping the Video
     croppedFilename = crop(scaledDownFilename)
 
-    # Stage IV: Mirror on X
+    # Stage III: Mirror on X
     mirrxFilename = mirror(croppedFilename, 'X')
 
-    # Stage V: Mirror on Y
+    # Stage IV: Mirror on Y
     mirryFilename = mirror(mirrxFilename, 'Y')
 
-    # Stage VI: Black and White
+    # Stage V: Black and White
     bwFilename = blackWhite(mirryFilename)
 
-    # Stage VII: Rotate
+    # Stage VI: Rotate
     rotateFilename = rotate(bwFilename, 180)
 
-    # Stage VIII: Adding the watermark
+    # Stage VII: Adding the watermark
     waterFilename = watermark(rotateFilename, LOGO) 
 
 def handler(event, context):
