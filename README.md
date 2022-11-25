@@ -10,3 +10,11 @@ Note: If you receive an error using the AWS CLI, make sure that you have the lat
 2. Build your Docker image using the following command. For information on building a Docker file from scratch see the instructions here . You can skip this step if your image is already built:
 
 - For each directory, use ```source build.sh stage``` where stage in [app, bw, crop ....]
+
+
+
+### For running Step Functions   
+The execution input configuration is generated using `lambda-code-step/scripts/notebooks` and stored at `lambda-code-step/scripts/conf`.    
+Run Step function for given stage as:    
+
+`source execute.sh <stage-name> <version(vi)>`
