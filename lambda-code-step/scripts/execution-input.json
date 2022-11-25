@@ -1,0 +1,16 @@
+{
+  "lambdaARN": "arn:aws:lambda:us-west-2:075165449331:function:pipeline-watermark-step",
+  "powerValues": [
+    512,
+    1024,
+    2048,
+    4096,
+    8192
+  ],
+  "num": 5,
+  "payload": {
+    "filename": "ElephantsDream"
+  },
+  "parallelInvocation": false,
+  "strategy": "cost"
+}
