@@ -59,11 +59,30 @@ def rotate(filename):
     #write_to_s3(outputFilename, ".mp4")
     return outputFilename  
 
+def watermark(filename, logoname):
+    logoname = read_from_s3(logoname, ".png")
+    #filename = read_from_s3(filename, ".mp4")
+    video = mp.VideoFileClip(filename + ".mp4")
+
+    logo = (
+        mp.ImageClip(logoname + ".png")
+        .set_duration(video.duration)
+        .resize(height=50)  # if you need to resize...
+        .margin(right=8, top=8, opacity=0)  # (optional) logo-border padding
+        .set_pos(("right", "bottom"))
+    )
+
+    final = mp.CompositeVideoClip([video, logo])
+    outputFileName = filename + "_watermarked"
+    final.write_videofile(outputFileName + ".mp4")
+    write_to_s3(outputFileName, ".mp4")
+    return outputFileName
+
 def pipeline(filename):
 
     mirrFilename = mirror(filename)
-    rotateFilename = rotate(rotate(mirrFilename))
-    write_to_s3(rotateFilename, ".mp4")
+    rotateFilename = rotate(rotate(rotate(mirrFilename)))
+    watermarkFilename = watermark(rotateFilename, LOGO)
 
 def handler(event, context):
     os.chdir('/tmp/')

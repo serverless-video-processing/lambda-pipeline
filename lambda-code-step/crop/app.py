@@ -8,8 +8,8 @@ import json
 BUCKET_NAME = "ffmpeg-profile"  # replace with your bucket name
 KEY = "ElephantsDream"  # replace with your object key
 LOGO = "logo"
-RESIZE = 180
-CROP = 128
+RESIZE = 128*2
+CROP = 128*4
 
 
 def read_from_s3(filename, ext):
