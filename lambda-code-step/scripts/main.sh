@@ -5,13 +5,13 @@
 # op_count=(1 1 1 2 3 1)
 # stages=("crop" "scaledown" "mirror" "mirror_bw" "mirror_2rotate" "mirror_3rotate" )
 
-version=step-v3_3
+version=step-v3-512mb-memory
 stages=("crop" "scaledown" "mirror" "mirror_bw" "mirror_bw_rotate" "mirror_bw_rotate_watermark")
 # stages=("mirror_bw_rotate" "mirror_bw_rotate_watermark")
-op_count=(1 1 1 2 3 5)
 
 # Make Output Directory
 mkdir ./output/$version
+echo "stages-crop, scaledown, mirror, mirror_bw, mirror_bw_rotate, mirror_bw_rotate_watermark" > ./output/$version/stages.txt
 
 # Run Step Functions
 for stage in ${stages[@]}; do 

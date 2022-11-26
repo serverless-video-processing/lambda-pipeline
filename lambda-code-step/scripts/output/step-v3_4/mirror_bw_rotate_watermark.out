@@ -1,0 +1,3 @@
+stage-mirror_bw_rotate_watermarkExecution started..........................................................................................................................SUCCEEDED
+Execution output: 
+{"power":2048,"cost":0.0043153824000000006,"duration":128433.19333333331,"stateMachine":{"executionCost":2.3E-4,"lambdaCost":0.07433233920000001,"visualization":"https://lambda-power-tuning.show/#AAgAEAAg;mdj6R0a0gkezwSpH;DWiNO1ZckztthMA7"}}

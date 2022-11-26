@@ -1,0 +1,1 @@
+stages-crop, scaledown, mirror, mirror_bw, mirror_bw_rotate, mirror_bw_rotate_watermark

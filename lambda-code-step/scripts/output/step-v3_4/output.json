@@ -1,0 +1,8 @@
+{
+    "stage-crop": {},
+    "stage-scaledown": {"power":2048,"cost":0.0031416672000000004,"duration":93501.99666666666,"stateMachine":{"executionCost":2.3E-4,"lambdaCost":0.0786354912,"visualization":"https://lambda-power-tuning.show/#AAgAEAAg;AJ+2R8mGc0dUpXJH;buRNO6dHiTvRyAg8"}},
+    "stage-mirror": {"power":2048,"cost":0.0011982096000000002,"duration":35660.76333333333,"stateMachine":{"executionCost":2.3E-4,"lambdaCost":0.020759659200000002,"visualization":"https://lambda-power-tuning.show/#AAgAEAAg;w0wLR/nvkkZVf0VG;Pg2dOl6ppTrOqt46"}},
+    "stage-mirror_bw": {"power":2048,"cost":0.0022712256,"duration":67595.26666666666,"stateMachine":{"executionCost":2.3E-4,"lambdaCost":0.0390654432,"visualization":"https://lambda-power-tuning.show/#AAgAEAAg;ogWERwMtCEdyUblG;2NgUO22IGTt871A7"}},
+    "stage-mirror_bw_rotate": {"power":2048,"cost":0.0032945808000000004,"duration":98052.19,"stateMachine":{"executionCost":2.3E-4,"lambdaCost":0.05788819680000001,"visualization":"https://lambda-power-tuning.show/#AAgAEAAg;GIK/R495Vkf8LAVH;5elXO53OcTtvJZY7"}},
+    "stage-mirror_bw_rotate_watermark": {"power":2048,"cost":0.0043153824000000006,"duration":128433.19333333331,"stateMachine":{"executionCost":2.3E-4,"lambdaCost":0.07433233920000001,"visualization":"https://lambda-power-tuning.show/#AAgAEAAg;mdj6R0a0gkezwSpH;DWiNO1ZckztthMA7"}}
+}

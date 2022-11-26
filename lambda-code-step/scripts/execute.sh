@@ -9,6 +9,7 @@ STATE_MACHINE_ARN="arn:aws:states:us-west-2:075165449331:stateMachine:powerTunin
 # start execution
 EXECUTION_ARN=$(aws stepfunctions start-execution --name "$1-profile-$2" --state-machine-arn $STATE_MACHINE_ARN --input "$INPUT"  --query 'executionArn' --output text)
 
+echo -n "stage-$1\n"
 echo -n "Execution started..."
 
 # poll execution status until completed
