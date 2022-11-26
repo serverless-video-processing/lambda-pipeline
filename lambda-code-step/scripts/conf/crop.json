@@ -1,1 +1,1 @@
-{"lambdaARN": "arn:aws:lambda:us-west-2:075165449331:function:pipeline-crop-step", "powerValues": [1024, 2048, 4096, 8192], "num": 5, "parallelInvocation": "false", "strategy": "cost", "payload": {"filename": "ElephantsDream_resized"}}
+{"lambdaARN": "arn:aws:lambda:us-west-2:075165449331:function:pipeline-crop-step", "powerValues": [1024, 2048, 4096, 8192], "num": 5, "parallelInvocation": "false", "strategy": "cost", "payload": {"filename": "ElephantsDream"}}

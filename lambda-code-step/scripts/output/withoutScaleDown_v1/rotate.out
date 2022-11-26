@@ -1,0 +1,3 @@
+Execution started.................................................................................................................................................................................................................................................................................SUCCEEDED
+Execution output: 
+{"power":2048,"cost":0.006027604800000001,"duration":179392.68000000002,"stateMachine":{"executionCost":2.5E-4,"lambdaCost":0.1328325432,"visualization":"https://lambda-power-tuning.show/#AAQACAAQACA=;bnCwSCwwL0i07LBHvkd1Rw==;RuzGOzeDxTujeMc7wkQKPA=="}}
