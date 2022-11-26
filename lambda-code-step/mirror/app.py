@@ -31,23 +31,28 @@ def write_to_s3(filename, ext):
     s3.Bucket(BUCKET_NAME).put_object(Key=filename + ext, Body=encoded_string)
 
 
-def rotate(filename):
+def mirror(filename):
     filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
-    outputFilename = filename + "_rot"
+    
+    dirs=['X', 'Y']
+    ind=random.randint(0,1)
+    dir=dirs[ind]
 
-    angles=[0, 90, 180, 270]
-    ind=random.randint(0,3)
-    angle=angles[ind]
+    if dir=='X':
+        stream=mp_vid.fx.all.mirror_x(stream)
+    else:
+        stream=mp_vid.fx.all.mirror_y(stream)
 
-    stream=mp_vid.fx.all.rotate(stream, angle)
+    outputFilename = filename + "_mirror"
     stream.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")
-    return outputFilename  
+    return outputFilename
 
 
 def pipeline(filename):
-    rotFilename = rotate(filename)
+    mirrorFilename = mirror(filename)
+
 
 def handler(event, context):
 
@@ -57,5 +62,5 @@ def handler(event, context):
     pipeline(event["filename"])
     return {
         "statusCode": 200,
-        "body": json.dumps("Lambda Completed: Rotated"),
+        "body": json.dumps("Lambda Completed: Mirrored on X"),
     }
