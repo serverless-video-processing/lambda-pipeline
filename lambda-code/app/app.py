@@ -3,12 +3,13 @@ import moviepy.video as mp_vid
 import boto3
 import os
 import json
+import random
 
 BUCKET_NAME = 'ffmpeg-profile' # replace with your bucket name
 KEY = 'ElephantsDream' # replace with your object key
 LOGO = 'logo'
-RESIZE = 180
-CROP = 128
+RESIZE = 128*2
+CROP = 128*4
 
 def read_from_s3(filename, ext):
     session = boto3.Session()
@@ -45,15 +46,20 @@ def crop(filename):
     write_to_s3(outputFilename, ".mp4")
     return outputFilename
 
-def mirror(filename, dir):
+def mirror(filename):
     filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
+    
+    dirs=['X', 'Y']
+    ind=random.randint(0,1)
+    dir=dirs[ind]
+
     if dir=='X':
         stream=mp_vid.fx.all.mirror_x(stream)
-        outputFilename = filename + "_mirrorx"
     else:
         stream=mp_vid.fx.all.mirror_y(stream)
-        outputFilename = filename + "_mirrory"
+
+    outputFilename = filename + "_mirror"
     stream.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")
     return outputFilename
@@ -84,10 +90,15 @@ def blackWhite(filename):
     write_to_s3(outputFilename, ".mp4")
     return outputFilename    
 
-def rotate(filename, angle):
+def rotate(filename):
     filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
     outputFilename = filename + "_rot"
+
+    angles=[0, 90, 180, 270]
+    ind=random.randint(0,3)
+    angle=angles[ind]
+
     stream=mp_vid.fx.all.rotate(stream, angle)
     stream.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")
@@ -95,25 +106,22 @@ def rotate(filename, angle):
 
 def pipeline():
 
-    # Stage I: Scaling Down the video
-    scaledDownFilename = scaleDown(KEY)
+    # Stage I: Cropping the Video
+    croppedFilename = crop(KEY)
 
-    # Stage II: Cropping the Video
-    croppedFilename = crop(scaledDownFilename)
+    # Stage II: Scaling Down the video
+    scaledDownFilename = scaleDown(croppedFilename)
 
-    # Stage III: Mirror on X
-    mirrxFilename = mirror(croppedFilename, 'X')
+    # Stage III: Mirror on X/Y
+    mirrFilename = mirror(croppedFilename)
 
-    # Stage IV: Mirror on Y
-    mirryFilename = mirror(mirrxFilename, 'Y')
+    # Stage IV: Black and White
+    bwFilename = blackWhite(mirrFilename)
 
-    # Stage V: Black and White
-    bwFilename = blackWhite(mirryFilename)
+    # Stage V: Rotate
+    rotateFilename = rotate(bwFilename)
 
-    # Stage VI: Rotate
-    rotateFilename = rotate(bwFilename, 180)
-
-    # Stage VII: Adding the watermark
+    # Stage VI: Adding the watermark
     waterFilename = watermark(rotateFilename, LOGO) 
 
 def handler(event, context):

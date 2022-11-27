@@ -8,8 +8,8 @@ import json
 BUCKET_NAME = 'ffmpeg-profile' # replace with your bucket name
 KEY = 'ElephantsDream' # replace with your object key
 LOGO = 'logo'
-RESIZE = 180
-CROP = 128
+RESIZE = 128*2
+CROP = 128*4
 
 def read_from_s3(filename, ext):
     session = boto3.Session()
@@ -43,10 +43,8 @@ def pipeline(filename):
 def handler(event, context):
 
     os.chdir("/tmp/")
-    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
-    pipeline(key.strip(".mp4"))
-
+    pipeline(event['filename'])
     return {
         "statusCode": 200,
-        "body": json.dumps("Lambda Completed: Scale Down"),
+        "body": json.dumps("Lambda Completed: Crop"),
     }
