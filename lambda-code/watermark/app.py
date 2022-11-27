@@ -5,7 +5,7 @@ import boto3
 import os
 import json
 
-BUCKET_NAME = 'ffmpeg-profile' # replace with your bucket name
+BUCKET_NAME = 'moviepy-video' # replace with your bucket name
 KEY = 'ElephantsDream' # replace with your object key
 LOGO = 'logo'
 RESIZE = 128*2
