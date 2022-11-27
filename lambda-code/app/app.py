@@ -113,7 +113,7 @@ def pipeline():
     scaledDownFilename = scaleDown(croppedFilename)
 
     # Stage III: Mirror on X/Y
-    mirrFilename = mirror(croppedFilename)
+    mirrFilename = mirror(scaledDownFilename)
 
     # Stage IV: Black and White
     bwFilename = blackWhite(mirrFilename)
