@@ -1,0 +1,30 @@
+{
+    "lambdaARN": "arn:aws:lambda:us-west-2:075165449331:function:pipeline-mirror_bw-step-v3",
+    "powerValues": [
+      512
+    ],
+    "num": 5,
+    "parallelInvocation": "true",
+    "strategy": "cost",
+    "payload": {
+      "filename": "ElephantsDream_cropped_resized_mirror"
+    },
+    "stats": [
+      {
+        "averagePrice": 0.0023685312,
+        "averageDuration": 281967.7766666667,
+        "totalCost": 0.0118500312,
+        "value": 512
+      }
+    ],
+    "analysis": {
+      "power": 512,
+      "cost": 0.0023685312,
+      "duration": 281967.7766666667,
+      "stateMachine": {
+        "executionCost": 0.00017,
+        "lambdaCost": 0.0118500312,
+        "visualization": "https://lambda-power-tuning.show/#AAI=;+a2JSA==;XDkbOw=="
+      }
+    }
+  }
