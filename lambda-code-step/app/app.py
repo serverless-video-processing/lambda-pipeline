@@ -28,12 +28,12 @@ def write_to_s3(filename, ext):
     s3.Bucket(BUCKET_NAME).put_object(Key=filename+ext, Body=encoded_string)
 
 def scaleDown(filename):
-    filename=read_from_s3(filename, ".mp4")
+    #filename=read_from_s3(filename, ".mp4")
     clip = mp.VideoFileClip(filename + ".mp4")
     clip_resized = clip.resize(height=RESIZE) #(width/height ratio is conserved)
     outputFilename = filename + "_resized"
     clip_resized.write_videofile(outputFilename+".mp4")
-    write_to_s3(outputFilename, ".mp4")
+    #write_to_s3(outputFilename, ".mp4")
     return outputFilename
 
 def crop(filename):
@@ -41,13 +41,12 @@ def crop(filename):
     stream = mp.VideoFileClip(filename+".mp4")
     outputFilename = filename + "_cropped"
     mp_vid.fx.all.crop(stream, CROP, CROP, CROP//2, CROP//2)
-    # Stage IV: Saving
     stream.write_videofile(outputFilename+".mp4")
-    write_to_s3(outputFilename, ".mp4")
+    #write_to_s3(outputFilename, ".mp4")
     return outputFilename
 
 def mirror(filename):
-    filename=read_from_s3(filename, ".mp4")
+    #filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
     
     dirs=['X', 'Y']
@@ -61,12 +60,12 @@ def mirror(filename):
 
     outputFilename = filename + "_mirror"
     stream.write_videofile(outputFilename+".mp4")
-    write_to_s3(outputFilename, ".mp4")
+    #write_to_s3(outputFilename, ".mp4")
     return outputFilename
 
 def watermark(filename, logoname):
     logoname=read_from_s3(logoname, ".png")
-    filename = read_from_s3(filename, ".mp4")
+    #filename = read_from_s3(filename, ".mp4")
     video = mp.VideoFileClip(filename+".mp4")
 
     logo = (mp.ImageClip(logoname+".png")
@@ -82,16 +81,16 @@ def watermark(filename, logoname):
     return outputFileName
 
 def blackWhite(filename):
-    filename=read_from_s3(filename, ".mp4")
+    #filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
     outputFilename = filename + "_bw"
     stream=mp_vid.fx.all.blackwhite(stream)
     stream.write_videofile(outputFilename+".mp4")
-    write_to_s3(outputFilename, ".mp4")
+    #write_to_s3(outputFilename, ".mp4")
     return outputFilename    
 
 def rotate(filename):
-    filename=read_from_s3(filename, ".mp4")
+    #filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
     outputFilename = filename + "_rot"
 
@@ -101,7 +100,7 @@ def rotate(filename):
 
     stream=mp_vid.fx.all.rotate(stream, angle)
     stream.write_videofile(outputFilename+".mp4")
-    write_to_s3(outputFilename, ".mp4")
+    #write_to_s3(outputFilename, ".mp4")
     return outputFilename  
 
 def pipeline():
