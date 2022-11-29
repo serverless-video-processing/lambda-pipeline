@@ -36,6 +36,12 @@
       "averageDuration": 137541.52166666667,
       "totalCost": 0.2776312896,
       "value": 4096
+    },
+    {
+      "averagePrice": 0.018336460800000003,
+      "averageDuration": 136431.72722222222,
+      "totalCost": 0.5514374208,
+      "value": 8192
     }
   ],
   "analysis": {
