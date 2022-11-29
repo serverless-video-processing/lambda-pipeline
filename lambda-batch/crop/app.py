@@ -31,7 +31,7 @@ def crop(filename):
     filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
     outputFilename = filename + "_cropped"
-    mp_vid.fx.all.crop(stream, CROP, CROP, CROP//2, CROP//2)
+    stream=mp_vid.fx.all.crop(stream, width=CROP, height=CROP, x_center=CROP//2, y_center=CROP//2)
     # Stage IV: Saving
     stream.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")

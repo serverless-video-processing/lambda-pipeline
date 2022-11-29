@@ -65,7 +65,7 @@ def collector():
         filename = read_from_s3(inp[:-4], ".mp4")
         clips.append(mp.VideoFileClip(inp))
 
-    final = mp.concatenate_videoclips(clips)
+    final = mp.concatenate_videoclips(clips, method='compose')
     final.write_videofile("final.mp4")
     write_to_s3("final", ".mp4")
 
@@ -74,8 +74,7 @@ def pipeline():
 
 def handler(event, context):
     os.chdir('/tmp/')
-    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
-    pipeline(key.strip(".mp4"))
+    pipeline()
     return {
         'statusCode': 200,
         'body': json.dumps('Lambda Completed: Collector')
