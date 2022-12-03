@@ -1,4 +1,0 @@
-moviepy
-boto3
-ffmpeg
-codeguru_profiler_agent

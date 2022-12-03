@@ -66,8 +66,8 @@ def collector():
         clips.append(mp.VideoFileClip(inp))
 
     final = mp.concatenate_videoclips(clips, method='compose')
-    final.write_videofile("final.mp4")
-    write_to_s3("final", ".mp4")
+    final.write_videofile("ElephantsDream_ProcessedAggregated.mp4")
+    write_to_s3("ElephantsDream_ProcessedAggregated", ".mp4")
 
 def pipeline():
     collector()

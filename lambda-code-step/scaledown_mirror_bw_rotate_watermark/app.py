@@ -28,7 +28,7 @@ def write_to_s3(filename, ext):
     s3.Bucket(BUCKET_NAME).put_object(Key=filename+ext, Body=encoded_string)
 
 def mirror(filename):
-    filename=read_from_s3(filename, ".mp4")
+    #filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
     
     dirs=['X', 'Y']
@@ -42,7 +42,16 @@ def mirror(filename):
 
     outputFilename = filename + "_mirror"
     stream.write_videofile(outputFilename+".mp4")
-    # write_to_s3(outputFilename, ".mp4")
+    #write_to_s3(outputFilename, ".mp4")
+    return outputFilename
+
+def blackWhite(filename):
+    #filename=read_from_s3(filename, ".mp4")
+    stream = mp.VideoFileClip(filename+".mp4")
+    outputFilename = filename + "_bw"
+    stream=mp_vid.fx.all.blackwhite(stream)
+    stream.write_videofile(outputFilename+".mp4")
+    #write_to_s3(outputFilename, ".mp4")
     return outputFilename
 
 def rotate(filename):
@@ -78,15 +87,27 @@ def watermark(filename, logoname):
     write_to_s3(outputFileName, ".mp4")
     return outputFileName
 
+def scaleDown(filename):
+    filename=read_from_s3(filename, ".mp4")
+    clip = mp.VideoFileClip(filename + ".mp4")
+    clip_resized = clip.resize(height=RESIZE) #(width/height ratio is conserved)
+    outputFilename = filename + "_resized"
+    clip_resized.write_videofile(outputFilename+".mp4")
+    #write_to_s3(outputFilename, ".mp4")
+    return outputFilename  
+
 def pipeline(filename):
 
-    mirrFilename = mirror(filename)
-    rotateFilename = rotate(rotate(rotate(mirrFilename)))
-    watermarkFilename = watermark(rotateFilename, LOGO)
+    scaleDownFilename = scaleDown(filename)
+    mirrFilename = mirror(scaleDownFilename)
+    bwFilename = blackWhite(mirrFilename)
+    rotFilename = rotate(bwFilename)
+    watermarkFilename = watermark(rotFilename, LOGO)
 
 def handler(event, context):
     os.chdir('/tmp/')
     pipeline(event['filename'])
+
     return {
         'statusCode': 200,
         'body': json.dumps('Lambda Completed: Whole Pipeline')

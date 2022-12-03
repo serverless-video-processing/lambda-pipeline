@@ -1,12 +1,12 @@
 import moviepy.editor as mp
 import moviepy.video as mp_vid
 import boto3
+import urllib.parse
 import os
 import json
 import random
 
 BUCKET_NAME = 'moviepy-video' # replace with your bucket name
-KEY = 'ElephantsDream' # replace with your object key
 LOGO = 'logo'
 RESIZE = 128*2
 CROP = 128*4
@@ -103,10 +103,10 @@ def rotate(filename):
     #write_to_s3(outputFilename, ".mp4")
     return outputFilename  
 
-def pipeline():
+def pipeline(filename):
 
     # Stage I: Cropping the Video
-    croppedFilename = crop(KEY)
+    croppedFilename = crop(filename)
 
     # Stage II: Scaling Down the video
     scaledDownFilename = scaleDown(croppedFilename)
@@ -125,7 +125,8 @@ def pipeline():
 
 def handler(event, context):
     os.chdir('/tmp/')
-    pipeline()
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+    pipeline(key.strip(".mp4"))
     return {
         'statusCode': 200,
         'body': json.dumps('Lambda Completed: Whole Pipeline')

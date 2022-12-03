@@ -1,3 +1,0 @@
-moviepy
-boto3
-ffmpeg
