@@ -63,7 +63,7 @@ def watermark(filename, logoname):
 
 def pipeline(filename):
     rotFilename = rotate(filename)
-    watermarkFilename = watermark(rotFilename)
+    watermarkFilename = watermark(rotFilename,LOGO)
 
 def handler(event, context):
 

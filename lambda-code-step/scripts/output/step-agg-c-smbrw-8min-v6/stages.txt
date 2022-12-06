@@ -1,0 +1,1 @@
+stages-crop, scaledown_mirror_bw_rotate_watermark
