@@ -6,10 +6,6 @@ import os
 import json
 
 BUCKET_NAME = 'moviepy-video' # replace with your bucket name
-KEY = 'ElephantsDream' # replace with your object key
-LOGO = 'logo'
-RESIZE = 128*2
-CROP = 128*4
 
 def read_from_s3(filename, ext):
     session = boto3.Session()

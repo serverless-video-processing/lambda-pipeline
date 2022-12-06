@@ -7,7 +7,11 @@ import json
 import random
 import urllib.parse
 
-BUCKET_NAME = 'moviepy-video-batch' # replace with your bucket name
+BUCKET_NAME = 'ffmpeg-profile' # replace with your bucket name
+LOGO = 'logo'
+RESIZE = 128*2
+CROP = 128*4
+BATCH_LEN = 4*60
 
 def read_from_s3(filename, ext):
     session = boto3.Session()
