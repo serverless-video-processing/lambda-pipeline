@@ -1,6 +1,6 @@
 #!/bin/bash
-
-stages=("app" "batcher" "bw" "collector" "crop" "mirror" "rotate" "scaledown" "watermark")
+#stages=("app" "batcher" "bw" "collector" "crop" "mirror" "rotate" "scaledown" "watermark")
+stages = ("batcher" "collector")
 
 # Run Step Functions
 for stage in ${stages[@]}; do 

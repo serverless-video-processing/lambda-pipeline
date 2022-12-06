@@ -36,7 +36,7 @@ def batcher(filename):
 
     for i, start_time in enumerate(range(0, lenVid, BATCH_LEN)):
         ffmpeg_extract_subclip(filename+".mp4", start_time, min(start_time+BATCH_LEN, lenVid), targetname=filename+"_"+str(i+1)+"_"+str(total)+"_batch.mp4")
-        write_to_s3(filename+"_"+str(i+1)+"_"+str(total)+"_batch", ".mp4")
+        write_to_s3(filename + str(BATCH_LEN//60) + "_"+str(i+1)+"_"+str(total)+"_batch", ".mp4")
 
 def pipeline(filename):
     batcher(filename)

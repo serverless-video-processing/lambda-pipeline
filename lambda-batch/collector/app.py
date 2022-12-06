@@ -50,10 +50,12 @@ def collector():
     s3 = boto3.resource('s3')
     bucket = s3.Bucket(BUCKET_NAME)
     inps=[]
+    first=''
     for obj in bucket.objects.all():
         key = obj.key
         if key.endswith('_watermarked.mp4'):
-           inps.append((int(key.split('_')[1]), key)) 
+           inps.append((int(key.split('_')[1]), key))
+           first = key.split('_')[0] 
 
     inps.sort()
     clips=[]
@@ -62,8 +64,8 @@ def collector():
         clips.append(mp.VideoFileClip(inp))
 
     final = mp.concatenate_videoclips(clips, method='compose')
-    final.write_videofile("ElephantsDream_ProcessedAggregated.mp4")
-    write_to_s3("ElephantsDream_ProcessedAggregated", ".mp4")
+    final.write_videofile(first+"_ProcessedAggregated.mp4")
+    write_to_s3(first+"_ProcessedAggregated", ".mp4")
 
 def pipeline():
     collector()
