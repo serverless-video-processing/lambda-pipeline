@@ -5,7 +5,7 @@ import boto3
 import os
 import json
 
-BUCKET_NAME = 'moviepy-video' # replace with your bucket name
+BUCKET_NAME = 'moviepy-video'
 RESIZE = 128*2
 
 def read_from_s3(filename, ext):

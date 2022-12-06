@@ -5,7 +5,7 @@ import boto3
 import os
 import json
 
-BUCKET_NAME = 'moviepy-video' # replace with your bucket name
+BUCKET_NAME = 'moviepy-video'
 CROP = 128*4
 
 def read_from_s3(filename, ext):
@@ -29,7 +29,6 @@ def crop(filename):
     stream = mp.VideoFileClip(filename+".mp4")
     outputFilename = filename + "_cropped"
     stream=mp_vid.fx.all.crop(stream, width=CROP, height=CROP, x_center=CROP//2, y_center=CROP//2)
-    # Stage IV: Saving
     stream.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")
     return outputFilename

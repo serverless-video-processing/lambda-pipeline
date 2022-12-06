@@ -6,7 +6,7 @@ import os
 import json
 import random
 
-BUCKET_NAME = "moviepy-video"  # replace with your bucket name
+BUCKET_NAME = "moviepy-video"
 
 def read_from_s3(filename, ext):
     session = boto3.Session()

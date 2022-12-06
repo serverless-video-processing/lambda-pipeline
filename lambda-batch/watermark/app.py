@@ -5,7 +5,7 @@ import boto3
 import os
 import json
 
-BUCKET_NAME = 'moviepy-video' # replace with your bucket name
+BUCKET_NAME = 'moviepy-video'
 LOGO = 'logo'
 
 def read_from_s3(filename, ext):
@@ -31,8 +31,8 @@ def watermark(filename, logoname):
 
     logo = (mp.ImageClip(logoname+".png")
             .set_duration(video.duration)
-            .resize(height=50) # if you need to resize...
-            .margin(right=8, top=8, opacity=0) # (optional) logo-border padding
+            .resize(height=50)
+            .margin(right=8, top=8, opacity=0)
             .set_pos(("right","bottom")))
 
     final = mp.CompositeVideoClip([video, logo])
