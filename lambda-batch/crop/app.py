@@ -5,7 +5,7 @@ import boto3
 import os
 import json
 
-BUCKET_NAME = 'moviepy-video'
+BUCKET_NAME = 'moviepy-video-batch'
 CROP = 128*4
 
 def read_from_s3(filename, ext):

@@ -5,7 +5,7 @@ import boto3
 import os
 import json
 
-BUCKET_NAME = 'moviepy-video'
+BUCKET_NAME = 'moviepy-video-batch'
 LOGO = 'logo'
 
 def read_from_s3(filename, ext):
