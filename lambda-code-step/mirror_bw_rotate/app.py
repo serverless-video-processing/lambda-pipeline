@@ -5,11 +5,7 @@ import os
 import json
 import random
 
-BUCKET_NAME = 'ffmpeg-profile' # replace with your bucket name
-KEY = 'ElephantsDream' # replace with your object key
-LOGO = 'logo'
-RESIZE = 180
-CROP = 128
+BUCKET_NAME = 'ffmpeg-profile'
 
 def read_from_s3(filename, ext):
     session = boto3.Session()
@@ -42,20 +38,16 @@ def mirror(filename):
 
     outputFilename = filename + "_mirror"
     stream.write_videofile(outputFilename+".mp4")
-    #write_to_s3(outputFilename, ".mp4")
     return outputFilename
 
 def blackWhite(filename):
-    #filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
     outputFilename = filename + "_bw"
     stream=mp_vid.fx.all.blackwhite(stream)
     stream.write_videofile(outputFilename+".mp4")
-    #write_to_s3(outputFilename, ".mp4")
     return outputFilename
 
 def rotate(filename):
-    #filename=read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename+".mp4")
     outputFilename = filename + "_rot"
 

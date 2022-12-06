@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#stages=("crop" "scaledown" "mirror" "bw" "mirror_bw" "mirror_bw_rotate" "mirror_bw_rotate_watermark" "mirror_2rotate" "mirror_3rotate" "watermark")
-stages = ("app" "crop")
+stages=("app" "batcher" "bw" "collector" "crop" "mirror" "mirror_bw" "mirror_bw_rotate" "mirror_bw_rotate_watermark" "rotate" "rotate_watermark" "scaledown" "scaledown_mirror_bw_rotate_watermark" "watermark")
 version=v5
 
 # Run Step Functions

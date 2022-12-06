@@ -5,11 +5,8 @@ import boto3
 import os
 import json
 
-BUCKET_NAME = 'ffmpeg-profile' # replace with your bucket name
-KEY = 'ElephantsDream' # replace with your object key
-LOGO = 'logo'
+BUCKET_NAME = 'ffmpeg-profile'
 RESIZE = 128*2
-CROP = 128*4
 
 def read_from_s3(filename, ext):
     session = boto3.Session()
@@ -30,7 +27,7 @@ def write_to_s3(filename, ext):
 def scaleDown(filename):
     filename=read_from_s3(filename, ".mp4")
     clip = mp.VideoFileClip(filename + ".mp4")
-    clip_resized = clip.resize(height=RESIZE) #(width/height ratio is conserved)
+    clip_resized = clip.resize(height=RESIZE)
     outputFilename = filename + "_resized"
     clip_resized.write_videofile(outputFilename+".mp4")
     write_to_s3(outputFilename, ".mp4")
@@ -42,8 +39,6 @@ def pipeline(filename):
 def handler(event, context):
 
     os.chdir("/tmp/")
-    # key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
-    # pipeline(key.strip(".mp4"))
     pipeline(event['filename'])
 
     return {

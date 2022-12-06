@@ -11,7 +11,6 @@ LOGO = "logo"
 RESIZE = 128*2
 CROP = 128*4
 
-
 def read_from_s3(filename, ext):
     session = boto3.Session()
     s3 = session.client("s3")
@@ -21,7 +20,6 @@ def read_from_s3(filename, ext):
         binary_file.write(body)
     return filename
 
-
 def write_to_s3(filename, ext):
     with open(filename + ext, "rb") as f:
         string = f.read()
@@ -29,27 +27,21 @@ def write_to_s3(filename, ext):
     s3 = boto3.resource("s3")
     s3.Bucket(BUCKET_NAME).put_object(Key=filename + ext, Body=encoded_string)
 
-
 def crop(filename):
     filename = read_from_s3(filename, ".mp4")
     stream = mp.VideoFileClip(filename + ".mp4")
     outputFilename = filename + "_cropped"
     stream=mp_vid.fx.all.crop(stream, width=CROP, height=CROP, x_center=CROP//2, y_center=CROP//2)
-    # Stage IV: Saving
     stream.write_videofile(outputFilename + ".mp4")
     write_to_s3(outputFilename, ".mp4")
     return outputFilename
 
-
 def pipeline(filename):
     croppedDownFilename = crop(filename)
-
 
 def handler(event, context):
 
     os.chdir("/tmp/")
-    # key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
-    # pipeline(key.strip(".mp4"))
     pipeline(event["filename"])
     return {
         "statusCode": 200,

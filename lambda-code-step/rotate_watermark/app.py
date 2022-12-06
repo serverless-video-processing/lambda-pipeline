@@ -6,11 +6,9 @@ import os
 import json
 import random
 
-BUCKET_NAME = "ffmpeg-profile"  # replace with your bucket name
-KEY = "ElephantsDream"  # replace with your object key
-LOGO = "logo"
-RESIZE = 180
-CROP = 128
+BUCKET_NAME = "ffmpeg-profile"
+KEY = "ElephantsDream"
+LOGO = 'logo'
 
 def read_from_s3(filename, ext):
     session = boto3.Session()
@@ -39,19 +37,17 @@ def rotate(filename):
 
     stream=mp_vid.fx.all.rotate(stream, angle)
     stream.write_videofile(outputFilename+".mp4")
-    #write_to_s3(outputFilename, ".mp4")
     return outputFilename  
 
 def watermark(filename, logoname):
     logoname = read_from_s3(logoname, ".png")
-    #filename = read_from_s3(filename, ".mp4")
     video = mp.VideoFileClip(filename + ".mp4")
 
     logo = (
         mp.ImageClip(logoname + ".png")
         .set_duration(video.duration)
-        .resize(height=50)  # if you need to resize...
-        .margin(right=8, top=8, opacity=0)  # (optional) logo-border padding
+        .resize(height=50)
+        .margin(right=8, top=8, opacity=0)
         .set_pos(("right", "bottom"))
     )
 

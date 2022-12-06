@@ -5,11 +5,8 @@ import os
 import json
 import random
 
-BUCKET_NAME = 'ffmpeg-profile' # replace with your bucket name
-KEY = 'ElephantsDream' # replace with your object key
+BUCKET_NAME = 'ffmpeg-profile'
 LOGO = 'logo'
-RESIZE = 180
-CROP = 128
 
 def read_from_s3(filename, ext):
     session = boto3.Session()
