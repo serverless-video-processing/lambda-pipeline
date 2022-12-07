@@ -1,0 +1,3 @@
+stage-bw\nExecution started.....................................................................................................................SUCCEEDED
+Execution output: 
+{"power":2048,"cost":0.0014768208,"duration":43952.54166666666,"stateMachine":{"executionCost":2.5E-4,"lambdaCost":0.21388106880000002,"visualization":"https://lambda-power-tuning.show/#AAQACAAQACA=;rbyvR4uwK0eBHr5GsuSPRg==;5iHGOuKRwTo4WtY6OjwiOw=="}}

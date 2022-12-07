@@ -1,0 +1,3 @@
+stage-mirror_bw\nExecution started...................................................................................................................SUCCEEDED
+Execution output: 
+{"power":2048,"cost":0.0016592352,"duration":49381.848333333335,"stateMachine":{"executionCost":2.5E-4,"lambdaCost":0.2400056232,"visualization":"https://lambda-power-tuning.show/#AAQACAAQACA=;GwLGR9nlQEdJgNZGIjigRg==;7z3fOrJ62Tqi1/E64aQ0Ow=="}}

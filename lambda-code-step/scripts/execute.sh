@@ -1,13 +1,13 @@
 #!/bin/bash
 # config
 STACK_NAME=lambda-power-tuning
-INPUT=$(cat conf/$1.json)  # or use a static string
+INPUT=$(cat conf/$2/$1.json)  # or use a static string
 
 # retrieve state machine ARN
 STATE_MACHINE_ARN="arn:aws:states:us-west-2:075165449331:stateMachine:powerTuningStateMachine-HuOjPttogOIp"
 
 # start execution
-EXECUTION_ARN=$(aws stepfunctions start-execution --name "$1-profile-$2" --state-machine-arn $STATE_MACHINE_ARN --input "$INPUT"  --query 'executionArn' --output text)
+EXECUTION_ARN=$(aws stepfunctions start-execution --name "$2-profile-$1-$3" --state-machine-arn $STATE_MACHINE_ARN --input "$INPUT"  --query 'executionArn' --output text)
 
 echo -n "stage-$1\n"
 echo -n "Execution started..."

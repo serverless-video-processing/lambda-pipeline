@@ -1,33 +1,41 @@
 #!/bin/bash
 
-# stages=("scaledown" "crop" "mirrorx" "mirrory" "bw" "rotate" "watermark")
-# stages=("crop" "scaledown" "mirror" "mirror_bw" "mirror_2rotate" "watermark")
-# op_count=(1 1 1 2 3 1)
-# stages=("crop" "scaledown" "mirror" "mirror_bw" "mirror_2rotate" "mirror_3rotate" )
+launchStepExec()
+{
+    # Make Output Directory
+    mkdir ./output/$batch_len
+    mkdir ./output/$batch_len/$step_version
+    printf "%s," "${stages[@]}" > ./output/$batch_len/$step_version/stages.txt
+
+    # Run Step Functions
+    for stage in ${stages[@]}; do 
+        echo $state
+
+        ## Run Step Function
+        source execute.sh $stage $step_version $run_version | tee ./output/$batch_len/$step_version/$stage.out 
+    done
+}
 
 lambda_version=step-v3
-batch_len="2MinBatch"
+batch_len="150Sec"
 
-step_version=step-agg-c-s-m-b-r-w
+run_version="v6.1"
+step_version=step-agg-csmbrw-$batch_len-batch
+stages=("app")
+launchStepExec
+
+step_version=step-agg-c-s-m-b-r-w-$batch_len-batch
 stages=("crop" "scaledown" "mirror" "bw" "rotate" "watermark")
+launchStepExec
 
-step_version=step-agg-c-s-mbrw
+step_version=step-agg-c-s-mbrw-$batch_len-batch
 stages=("crop" "scaledown" "mirror_bw_rotate_watermark")
+launchStepExec
 
-step_version=step-agg-c-s-mb-rw
+step_version=step-agg-c-s-mb-rw-$batch_len-batch
 stages=("crop" "scaledown" "mirror_bw" "rotate_watermark")
+launchStepExec
 
-step_version=step-agg-c-smbrw
+step_version=step-agg-c-smbrw-$batch_len-batch
 stages=("crop" "scaledown_mirror_bw_rotate_watermark")
-
-# Make Output Directory
-mkdir ./output/$batch_len/$step_version
-echo "stages-crop, scaledown, mirror, mirror_bw, mirror_bw_rotate, mirror_bw_rotate_watermark" > ./output/$batch_len/$step_version/stages.txt
-
-# Run Step Functions
-for stage in ${stages[@]}; do 
-    echo $state
-
-    ## Run Step Function
-    source execute.sh $stage $step_version | tee ./output/$batch_len/$step_version/$stage.out 
-done
+launchStepExec

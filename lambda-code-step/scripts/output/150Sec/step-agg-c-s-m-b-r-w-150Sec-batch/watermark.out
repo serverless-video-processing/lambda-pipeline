@@ -1,0 +1,3 @@
+stage-watermark\nExecution started......................................................................................SUCCEEDED
+Execution output: 
+{"power":2048,"cost":7.888272E-4,"duration":23476.108888888888,"stateMachine":{"executionCost":2.5E-4,"lambdaCost":0.11574086160000002,"visualization":"https://lambda-power-tuning.show/#AAQACAAQACA=;Y+k6Rzhot0ai+0lGFikdRg==;ebtSOkzJTjoYuWM6OzOxOg=="}}

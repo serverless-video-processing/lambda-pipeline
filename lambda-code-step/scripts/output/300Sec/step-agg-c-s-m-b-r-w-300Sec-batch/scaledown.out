@@ -1,0 +1,3 @@
+stage-scaledown\nExecution started................................................................................................................................................................................SUCCEEDED
+Execution output: 
+{"power":2048,"cost":0.0030868320000000003,"duration":91869.23333333334,"stateMachine":{"executionCost":2.5E-4,"lambdaCost":0.5341888944000001,"visualization":"https://lambda-power-tuning.show/#AAQACAAQACA=;9+Q3SJ5us0ffdGVHOvxcRw==;+VNPO3JMSjsnWYE7CSb5Ow=="}}

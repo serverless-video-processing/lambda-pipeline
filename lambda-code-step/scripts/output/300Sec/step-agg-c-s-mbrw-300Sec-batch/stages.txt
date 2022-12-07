@@ -1,0 +1,1 @@
+crop,scaledown,mirror_bw_rotate_watermark,

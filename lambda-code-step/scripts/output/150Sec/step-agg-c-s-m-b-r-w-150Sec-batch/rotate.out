@@ -1,0 +1,3 @@
+stage-rotate\nExecution started...................................................................................SUCCEEDED
+Execution output: 
+{"power":2048,"cost":7.938000000000001E-4,"duration":23624.14888888889,"stateMachine":{"executionCost":2.5E-4,"lambdaCost":0.1152256224,"visualization":"https://lambda-power-tuning.show/#AAQACAAQACA=;yT46R0yQuEZJjFBGG0oZRg==;r/pROgQXUDqvI2s60tSsOg=="}}

@@ -1,0 +1,58 @@
+{
+    "lambdaARN": "arn:aws:lambda:us-west-2:075165449331:function:pipeline-scaledown-step-v3",
+    "powerValues": [
+      512,
+      1024,
+      2048,
+      4096,
+      8192
+    ],
+    "num": 30,
+    "parallelInvocation": "true",
+    "strategy": "cost",
+    "payload": {
+      "filename": "ElephantsDream120_1_5_batch_cropped"
+    },
+    "stats": [
+      {
+        "averagePrice": 0.0013187580000000002,
+        "averageDuration": 156994.98333333334,
+        "totalCost": 0.03956226120000001,
+        "value": 512
+      },
+      {
+        "averagePrice": 0.001297884,
+        "averageDuration": 77254.04944444445,
+        "totalCost": 0.039006189600000005,
+        "value": 1024
+      },
+      {
+        "averagePrice": 0.0012842592000000001,
+        "averageDuration": 38221.33499999999,
+        "totalCost": 0.03846675840000001,
+        "value": 2048
+      },
+      {
+        "averagePrice": 0.0016738848,
+        "averageDuration": 24908.31111111111,
+        "totalCost": 0.05038971840000001,
+        "value": 4096
+      },
+      {
+        "averagePrice": 0.003199392,
+        "averageDuration": 23804.205555555553,
+        "totalCost": 0.0964559232,
+        "value": 8192
+      }
+    ],
+    "analysis": {
+      "power": 2048,
+      "cost": 0.0012842592000000001,
+      "duration": 38221.33499999999,
+      "stateMachine": {
+        "executionCost": 0.00028,
+        "lambdaCost": 0.2638808508,
+        "visualization": "https://lambda-power-tuning.show/#AAIABAAIABAAIA==;v1AZSAbjlkdWTRVHn5jCRmn4uUY=;LdqsOsMdqjqXVKg6QWbbOuSsUTs="
+      }
+    }
+  }

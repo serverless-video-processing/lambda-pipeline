@@ -1,0 +1,3 @@
+stage-crop\nExecution started.............................................................................................................................................................................................................................................................................SUCCEEDED
+Execution output: 
+{"power":2048,"cost":0.0027013392,"duration":80396.36444444447,"stateMachine":{"executionCost":2.8E-4,"lambdaCost":0.44214137519999996,"visualization":"https://lambda-power-tuning.show/#AAIABAAIABAAIA==;QwefSMtgHkgvBp1Hm+AlR+J81UY=;LkszO5uPMjv0CDE7RQQ7O4CycDs="}}
