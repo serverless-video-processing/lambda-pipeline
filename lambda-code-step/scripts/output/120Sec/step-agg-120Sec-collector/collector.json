@@ -6,7 +6,7 @@
     4096,
     8192
   ],
-  "num": 5,
+  "num": 30,
   "parallelInvocation": "true",
   "strategy": "cost",
   "payload": {
@@ -14,38 +14,38 @@
   },
   "stats": [
     {
-      "averagePrice": 0.0027045312,
-      "averageDuration": 160983.32666666666,
-      "totalCost": 0.0134653848,
+      "averagePrice": 0.0027983592000000003,
+      "averageDuration": 166568.41444444444,
+      "totalCost": 0.08405880000000002,
       "value": 1024
     },
     {
-      "averagePrice": 0.0025876032000000005,
-      "averageDuration": 77011.80666666666,
-      "totalCost": 0.012920342400000003,
+      "averagePrice": 0.0027351072,
+      "averageDuration": 81401.68555555555,
+      "totalCost": 0.08163207360000002,
       "value": 2048
     },
     {
-      "averagePrice": 0.0029387232000000004,
-      "averageDuration": 43730.676666666666,
-      "totalCost": 0.014711827200000003,
+      "averagePrice": 0.0030494688000000003,
+      "averageDuration": 45378.18444444445,
+      "totalCost": 0.09181630080000001,
       "value": 4096
     },
     {
-      "averagePrice": 0.004729267200000001,
-      "averageDuration": 35187.01666666666,
-      "totalCost": 0.023960428800000003,
+      "averagePrice": 0.0046523904,
+      "averageDuration": 34615.436111111114,
+      "totalCost": 0.1405623744,
       "value": 8192
     }
   ],
   "analysis": {
     "power": 2048,
-    "cost": 0.0025876032000000005,
-    "duration": 77011.80666666666,
+    "cost": 0.0027351072,
+    "duration": 81401.68555555555,
     "stateMachine": {
       "executionCost": 0.00025,
-      "lambdaCost": 0.0650579832,
-      "visualization": "https://lambda-power-tuning.show/#AAQACAAQACA=;1TUdSOdplket0ipHBHMJRw==;gT4xO8eUKTuYl0A7+PeaOw=="
+      "lambdaCost": 0.3980695488,
+      "visualization": "https://lambda-power-tuning.show/#AAQACAAQACA=;G6oiSNj8nkcvQjFHcDcHRw==;rWQ3O3w/MzuZ2Uc7FHOYOw=="
     }
   }
 }

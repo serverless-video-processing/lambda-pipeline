@@ -6,7 +6,7 @@
         4096,
         8192
     ],
-    "num": 5,
+    "num": 30,
     "parallelInvocation": "true",
     "strategy": "cost",
     "payload": {
@@ -14,38 +14,38 @@
     },
     "stats": [
         {
-            "averagePrice": 0.0027169968000000004,
-            "averageDuration": 161725.02,
-            "totalCost": 0.013470710400000002,
+            "averagePrice": 0.0027502272,
+            "averageDuration": 163703.2577777778,
+            "totalCost": 0.08264655840000001,
             "value": 1024
         },
         {
-            "averagePrice": 0.0026982480000000003,
-            "averageDuration": 80304.05666666666,
-            "totalCost": 0.013526284800000002,
+            "averagePrice": 0.0026950224,
+            "averageDuration": 80208.3927777778,
+            "totalCost": 0.0807813552,
             "value": 2048
         },
         {
-            "averagePrice": 0.0029299872000000003,
-            "averageDuration": 43600.753333333334,
-            "totalCost": 0.0146988576,
+            "averagePrice": 0.0029803872,
+            "averageDuration": 44350.32833333334,
+            "totalCost": 0.0897505728,
             "value": 4096
         },
         {
-            "averagePrice": 0.0045123456,
-            "averageDuration": 33573.99,
-            "totalCost": 0.022916947200000003,
+            "averagePrice": 0.004628467200000001,
+            "averageDuration": 34437.573888888895,
+            "totalCost": 0.1388099328,
             "value": 8192
         }
     ],
     "analysis": {
         "power": 2048,
-        "cost": 0.0026982480000000003,
-        "duration": 80304.05666666666,
+        "cost": 0.0026950224,
+        "duration": 80208.3927777778,
         "stateMachine": {
             "executionCost": 0.00025,
-            "lambdaCost": 0.0646128,
-            "visualization": "https://lambda-power-tuning.show/#AAQACAAQACA=;Qe8dSAfYnEfBUCpH/SUDRw==;pA8yOxfVMDsHBUA7TNyTOw=="
+            "lambdaCost": 0.39198841920000005,
+            "visualization": "https://lambda-power-tuning.show/#AAQACAAQACA=;0N0fSDKonEdUPi1Hk4UGRw==;KD00O/meMDuaUkM7ZqqXOw=="
         }
     }
 }

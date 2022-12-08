@@ -6,7 +6,7 @@
         4096,
         8192
     ],
-    "num": 5,
+    "num": 30,
     "parallelInvocation": "true",
     "strategy": "cost",
     "payload": {
@@ -14,38 +14,38 @@
     },
     "stats": [
         {
-            "averagePrice": 0.0028602840000000003,
-            "averageDuration": 170254.36666666667,
-            "totalCost": 0.014246467200000001,
+            "averagePrice": 0.0027989136000000003,
+            "averageDuration": 166601.24277777775,
+            "totalCost": 0.0837436152,
             "value": 1024
         },
         {
-            "averagePrice": 0.0027696816,
-            "averageDuration": 82430.21666666667,
-            "totalCost": 0.0137870544,
+            "averagePrice": 0.0027166944,
+            "averageDuration": 80853.76444444444,
+            "totalCost": 0.0815861088,
             "value": 2048
         },
         {
-            "averagePrice": 0.0029522304000000003,
-            "averageDuration": 43931.51666666666,
-            "totalCost": 0.014799657600000002,
+            "averagePrice": 0.0030509472,
+            "averageDuration": 45400.16777777778,
+            "totalCost": 0.09160999680000001,
             "value": 4096
         },
         {
-            "averagePrice": 0.004767705600000001,
-            "averageDuration": 35473.11666666666,
-            "totalCost": 0.023807212800000005,
+            "averagePrice": 0.0047972736000000005,
+            "averageDuration": 35693.74222222222,
+            "totalCost": 0.1446982656,
             "value": 8192
         }
     ],
     "analysis": {
         "power": 2048,
-        "cost": 0.0027696816,
-        "duration": 82430.21666666667,
+        "cost": 0.0027166944,
+        "duration": 80853.76444444444,
         "stateMachine": {
             "executionCost": 0.00025,
-            "lambdaCost": 0.066640392,
-            "visualization": "https://lambda-power-tuning.show/#AAQACAAQACA=;l0MmSBz/oEeEmytHHpEKRw==;mnM7O4yDNTs1ekE7ajqcOw=="
+            "lambdaCost": 0.40163798640000004,
+            "visualization": "https://lambda-power-tuning.show/#AAQACAAQACA=;ULIiSOLqnUcrWDFHvm0LRw==;+m03O5IKMjtm8kc7czKdOw=="
         }
     }
 }
