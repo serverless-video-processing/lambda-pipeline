@@ -1,4 +1,4 @@
-,pipeline,aggregation,batch,memory,time,cost
+,pipeline,aggregation,batchLen,memory,time,cost
 0,step-agg-csmbrw-120Sec-batch,csmbrw,120,512,784.4045455555555,0.006589002000000001
 1,step-agg-csmbrw-120Sec-batch,csmbrw,120,1024,386.52243444444446,0.006493586400000001
 2,step-agg-csmbrw-120Sec-batch,csmbrw,120,2048,189.28076111111108,0.006359841600000001
