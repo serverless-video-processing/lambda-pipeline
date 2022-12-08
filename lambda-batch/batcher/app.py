@@ -7,7 +7,7 @@ import json
 import random
 
 BUCKET_NAME = 'moviepy-video-batch'
-BATCH_LEN = 2*60
+BATCH_LEN = 5*60
 
 def read_from_s3(filename, ext):
     session = boto3.Session()
