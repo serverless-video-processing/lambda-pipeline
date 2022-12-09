@@ -22,6 +22,12 @@ python3 -m cProfile -o ./data/profile.pstats app.py
 gprof2dot -f pstats --root=app:83:pipeline ./data/profile.pstats | dot -Tpng -o ./viz/gprof2dot.png
 ``` 
 
+### Visualizing CPU Execution Cycles using snakeviz
+SnakeViz is a browser based graphical viewer for the output of Python’s cProfile module(Ref: [snakeviz](https://jiffyclub.github.io/snakeviz/)). Generate a plot as:
+
+```snakeviz ./data/profile.pstats ```
+
+
 ## Profilling Memory Consumption
 We use the tool `memory_profiler` to profile memory consumption of our pipeline. The documentation can be found at [PyPi](https://pypi.org/project/memory-profiler/).    
 
