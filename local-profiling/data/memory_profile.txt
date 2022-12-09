@@ -1,0 +1,383 @@
+Moviepy - Building video ElephantsDream_cropped.mp4.
+MoviePy - Writing audio in ElephantsDream_croppedTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    21    111.0 MiB    111.0 MiB           1   @profile
+    22                                         def crop(filename):
+    23    120.3 MiB      9.3 MiB           1       stream = mp.VideoFileClip(filename+".mp4")
+    24    120.3 MiB      0.0 MiB           1       outputFilename = filename + "_cropped"
+    25    120.3 MiB      0.0 MiB           1       stream=mp_vid.fx.all.crop(stream, width=CROP, height=CROP, x_center=CROP//2, y_center=CROP//2)
+    26    127.7 MiB      7.4 MiB           1       stream.write_videofile(outputFilename+".mp4")
+    27    127.7 MiB      0.0 MiB           1       return outputFilename
+
+
+Moviepy - Building video ElephantsDream_cropped_resized.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resizedTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    13    127.7 MiB    127.7 MiB           1   @profile
+    14                                         def scaleDown(filename):
+    15    130.8 MiB      3.1 MiB           1       clip = mp.VideoFileClip(filename + ".mp4")
+    16    130.8 MiB      0.0 MiB           1       clip_resized = clip.resize(height=RESIZE) #(width/height ratio is conserved)
+    17    130.8 MiB      0.0 MiB           1       outputFilename = filename + "_resized"
+    18    134.6 MiB      3.8 MiB           1       clip_resized.write_videofile(outputFilename+".mp4")
+    19    134.6 MiB      0.0 MiB           1       return outputFilename
+
+
+Moviepy - Building video ElephantsDream_cropped_resized_mirror.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resized_mirrorTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized_mirror.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized_mirror.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    29    134.6 MiB    134.6 MiB           1   @profile
+    30                                         def mirror(filename):
+    31    134.6 MiB      0.0 MiB           1       stream = mp.VideoFileClip(filename+".mp4")
+    32                                             
+    33    134.6 MiB      0.0 MiB           1       dirs=['X', 'Y']
+    34    134.6 MiB      0.0 MiB           1       ind=random.randint(0,1)
+    35    134.6 MiB      0.0 MiB           1       dir=dirs[ind]
+    36                                         
+    37    134.6 MiB      0.0 MiB           1       if dir=='X':
+    38                                                 stream=mp_vid.fx.all.mirror_x(stream)
+    39                                             else:
+    40    134.6 MiB      0.0 MiB           1           stream=mp_vid.fx.all.mirror_y(stream)
+    41                                         
+    42    134.6 MiB      0.0 MiB           1       outputFilename = filename + "_mirror"
+    43    139.6 MiB      5.1 MiB           1       stream.write_videofile(outputFilename+".mp4")
+    44    139.6 MiB      0.0 MiB           1       return outputFilename
+
+
+Moviepy - Building video ElephantsDream_cropped_resized_mirror_bw.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resized_mirror_bwTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized_mirror_bw.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized_mirror_bw.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    61    139.6 MiB    139.6 MiB           1   @profile
+    62                                         def blackWhite(filename):
+    63    139.6 MiB      0.0 MiB           1       stream = mp.VideoFileClip(filename+".mp4")
+    64    139.6 MiB      0.0 MiB           1       outputFilename = filename + "_bw"
+    65    139.6 MiB      0.0 MiB           1       stream=mp_vid.fx.all.blackwhite(stream)
+    66    140.0 MiB      0.4 MiB           1       stream.write_videofile(outputFilename+".mp4")
+    67    140.0 MiB      0.0 MiB           1       return outputFilename    
+
+
+Moviepy - Building video ElephantsDream_cropped_resized_mirror_bw_rot.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resized_mirror_bw_rotTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized_mirror_bw_rot.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized_mirror_bw_rot.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    69    140.0 MiB    140.0 MiB           1   @profile
+    70                                         def rotate(filename):
+    71    140.0 MiB      0.0 MiB           1       stream = mp.VideoFileClip(filename+".mp4")
+    72    140.0 MiB      0.0 MiB           1       outputFilename = filename + "_rot"
+    73                                         
+    74    140.0 MiB      0.0 MiB           1       angles=[0, 90, 180, 270]
+    75    140.0 MiB      0.0 MiB           1       ind=random.randint(0,3)
+    76    140.0 MiB      0.0 MiB           1       angle=angles[ind]
+    77                                         
+    78    140.0 MiB      0.0 MiB           1       stream=mp_vid.fx.all.rotate(stream, angle)
+    79    145.4 MiB      5.4 MiB           1       stream.write_videofile(outputFilename+".mp4")
+    80    145.4 MiB      0.0 MiB           1       return outputFilename  
+
+
+Moviepy - Building video ElephantsDream_cropped_resized_mirror_bw_rot_watermarked.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resized_mirror_bw_rot_watermarkedTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized_mirror_bw_rot_watermarked.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized_mirror_bw_rot_watermarked.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    46    145.4 MiB    145.4 MiB           1   @profile
+    47                                         def watermark(filename, logoname):
+    48    145.4 MiB      0.0 MiB           1       video = mp.VideoFileClip(filename+".mp4")
+    49                                         
+    50    145.4 MiB      0.0 MiB           4       logo = (mp.ImageClip(logoname+".png")
+    51    145.4 MiB      0.0 MiB           1               .set_duration(video.duration)
+    52    145.4 MiB      0.0 MiB           1               .resize(height=50)
+    53    145.4 MiB      0.0 MiB           1               .margin(right=8, top=8, opacity=0)
+    54    145.4 MiB      0.0 MiB           1               .set_pos(("right","bottom")))
+    55                                         
+    56    142.9 MiB     -2.5 MiB           1       final = mp.CompositeVideoClip([video, logo])
+    57    142.9 MiB      0.0 MiB           1       outputFileName= filename+"_watermarked"
+    58    135.1 MiB     -7.8 MiB           1       final.write_videofile(outputFileName+".mp4")
+    59    135.1 MiB      0.0 MiB           1       return outputFileName
+
+
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    82    111.0 MiB    111.0 MiB           1   @profile
+    83                                         def pipeline(filename):
+    84                                         
+    85                                             # Stage I: Cropping the Video
+    86    127.7 MiB     16.7 MiB           1       croppedFilename = crop(filename)
+    87                                         
+    88                                             # Stage II: Scaling Down the video
+    89    134.6 MiB      6.9 MiB           1       scaledDownFilename = scaleDown(croppedFilename)
+    90                                         
+    91                                             # Stage III: Mirror on X/Y
+    92    139.6 MiB      5.1 MiB           1       mirrFilename = mirror(scaledDownFilename)
+    93                                         
+    94                                             # Stage IV: Black and White
+    95    140.0 MiB      0.4 MiB           1       bwFilename = blackWhite(mirrFilename)
+    96                                         
+    97                                             # Stage V: Rotate
+    98    145.4 MiB      5.4 MiB           1       rotateFilename = rotate(bwFilename)
+    99                                         
+   100                                             # Stage VI: Adding the watermark
+   101    135.1 MiB    -10.3 MiB           1       waterFilename = watermark(rotateFilename, LOGO) 
+
+
+root node app:83:pipeline not found (might already be pruned : try -e0 -n0 flags)
+Moviepy - Building video ElephantsDream_cropped.mp4.
+MoviePy - Writing audio in ElephantsDream_croppedTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    21    101.7 MiB    101.7 MiB           1   @profile
+    22                                         def crop(filename):
+    23    110.9 MiB      9.3 MiB           1       stream = mp.VideoFileClip(filename+".mp4")
+    24    110.9 MiB      0.0 MiB           1       outputFilename = filename + "_cropped"
+    25    110.9 MiB      0.0 MiB           1       stream=mp_vid.fx.all.crop(stream, width=CROP, height=CROP, x_center=CROP//2, y_center=CROP//2)
+    26    117.9 MiB      7.0 MiB           1       stream.write_videofile(outputFilename+".mp4")
+    27    117.9 MiB      0.0 MiB           1       return outputFilename
+
+
+Moviepy - Building video ElephantsDream_cropped_resized.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resizedTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    13    117.9 MiB    117.9 MiB           1   @profile
+    14                                         def scaleDown(filename):
+    15    120.5 MiB      2.6 MiB           1       clip = mp.VideoFileClip(filename + ".mp4")
+    16    121.6 MiB      1.1 MiB           1       clip_resized = clip.resize(height=RESIZE) #(width/height ratio is conserved)
+    17    121.6 MiB      0.0 MiB           1       outputFilename = filename + "_resized"
+    18    122.5 MiB      0.9 MiB           1       clip_resized.write_videofile(outputFilename+".mp4")
+    19    122.5 MiB      0.0 MiB           1       return outputFilename
+
+
+Moviepy - Building video ElephantsDream_cropped_resized_mirror.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resized_mirrorTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized_mirror.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized_mirror.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    29    122.5 MiB    122.5 MiB           1   @profile
+    30                                         def mirror(filename):
+    31    124.6 MiB      2.1 MiB           1       stream = mp.VideoFileClip(filename+".mp4")
+    32                                             
+    33    124.6 MiB      0.0 MiB           1       dirs=['X', 'Y']
+    34    124.6 MiB      0.0 MiB           1       ind=random.randint(0,1)
+    35    124.6 MiB      0.0 MiB           1       dir=dirs[ind]
+    36                                         
+    37    124.6 MiB      0.0 MiB           1       if dir=='X':
+    38    124.6 MiB      0.0 MiB           1           stream=mp_vid.fx.all.mirror_x(stream)
+    39                                             else:
+    40                                                 stream=mp_vid.fx.all.mirror_y(stream)
+    41                                         
+    42    124.6 MiB      0.0 MiB           1       outputFilename = filename + "_mirror"
+    43    130.9 MiB      6.3 MiB           1       stream.write_videofile(outputFilename+".mp4")
+    44    130.9 MiB      0.0 MiB           1       return outputFilename
+
+
+Moviepy - Building video ElephantsDream_cropped_resized_mirror_bw.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resized_mirror_bwTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized_mirror_bw.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized_mirror_bw.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    61    130.9 MiB    130.9 MiB           1   @profile
+    62                                         def blackWhite(filename):
+    63    130.9 MiB      0.0 MiB           1       stream = mp.VideoFileClip(filename+".mp4")
+    64    130.9 MiB      0.0 MiB           1       outputFilename = filename + "_bw"
+    65    130.9 MiB      0.0 MiB           1       stream=mp_vid.fx.all.blackwhite(stream)
+    66    131.3 MiB      0.4 MiB           1       stream.write_videofile(outputFilename+".mp4")
+    67    131.3 MiB      0.0 MiB           1       return outputFilename    
+
+
+Moviepy - Building video ElephantsDream_cropped_resized_mirror_bw_rot.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resized_mirror_bw_rotTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized_mirror_bw_rot.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized_mirror_bw_rot.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    69    131.3 MiB    131.3 MiB           1   @profile
+    70                                         def rotate(filename):
+    71    131.3 MiB      0.0 MiB           1       stream = mp.VideoFileClip(filename+".mp4")
+    72    131.3 MiB      0.0 MiB           1       outputFilename = filename + "_rot"
+    73                                         
+    74    131.3 MiB      0.0 MiB           1       angles=[0, 90, 180, 270]
+    75    131.3 MiB      0.0 MiB           1       ind=random.randint(0,3)
+    76    131.3 MiB      0.0 MiB           1       angle=angles[ind]
+    77                                         
+    78    131.3 MiB      0.0 MiB           1       stream=mp_vid.fx.all.rotate(stream, angle)
+    79    136.7 MiB      5.4 MiB           1       stream.write_videofile(outputFilename+".mp4")
+    80    136.7 MiB      0.0 MiB           1       return outputFilename  
+
+
+Moviepy - Building video ElephantsDream_cropped_resized_mirror_bw_rot_watermarked.mp4.
+MoviePy - Writing audio in ElephantsDream_cropped_resized_mirror_bw_rot_watermarkedTEMP_MPY_wvf_snd.mp3
+
+                                                                       
+MoviePy - Done.
+Moviepy - Writing video ElephantsDream_cropped_resized_mirror_bw_rot_watermarked.mp4
+
+
+                                                                   
+Moviepy - Done !
+Moviepy - video ready ElephantsDream_cropped_resized_mirror_bw_rot_watermarked.mp4
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    46    136.7 MiB    136.7 MiB           1   @profile
+    47                                         def watermark(filename, logoname):
+    48    136.7 MiB      0.0 MiB           1       video = mp.VideoFileClip(filename+".mp4")
+    49                                         
+    50    134.1 MiB     -2.5 MiB           4       logo = (mp.ImageClip(logoname+".png")
+    51    134.1 MiB      0.0 MiB           1               .set_duration(video.duration)
+    52    134.1 MiB      0.0 MiB           1               .resize(height=50)
+    53    134.1 MiB      0.0 MiB           1               .margin(right=8, top=8, opacity=0)
+    54    134.1 MiB      0.0 MiB           1               .set_pos(("right","bottom")))
+    55                                         
+    56    134.1 MiB      0.0 MiB           1       final = mp.CompositeVideoClip([video, logo])
+    57    134.1 MiB      0.0 MiB           1       outputFileName= filename+"_watermarked"
+    58    125.5 MiB     -8.7 MiB           1       final.write_videofile(outputFileName+".mp4")
+    59    125.5 MiB      0.0 MiB           1       return outputFileName
+
+
+Filename: app.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    82    101.7 MiB    101.7 MiB           1   @profile
+    83                                         def pipeline(filename):
+    84                                         
+    85                                             # Stage I: Cropping the Video
+    86    117.9 MiB     16.3 MiB           1       croppedFilename = crop(filename)
+    87                                         
+    88                                             # Stage II: Scaling Down the video
+    89    122.5 MiB      4.6 MiB           1       scaledDownFilename = scaleDown(croppedFilename)
+    90                                         
+    91                                             # Stage III: Mirror on X/Y
+    92    130.9 MiB      8.4 MiB           1       mirrFilename = mirror(scaledDownFilename)
+    93                                         
+    94                                             # Stage IV: Black and White
+    95    131.3 MiB      0.4 MiB           1       bwFilename = blackWhite(mirrFilename)
+    96                                         
+    97                                             # Stage V: Rotate
+    98    136.7 MiB      5.4 MiB           1       rotateFilename = rotate(bwFilename)
+    99                                         
+   100                                             # Stage VI: Adding the watermark
+   101    125.5 MiB    -11.2 MiB           1       waterFilename = watermark(rotateFilename, LOGO) 
+
+
