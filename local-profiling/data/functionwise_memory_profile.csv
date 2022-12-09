@@ -1,0 +1,7 @@
+Mem usage(MB), stage
+111.0, crop
+127.7, scaleDown
+134.6, mirror
+139.6, blackWhite
+140.0, rotate
+145.4, watermark
