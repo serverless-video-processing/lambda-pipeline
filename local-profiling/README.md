@@ -8,6 +8,9 @@
 
 `pip install -r requirements.txt`
 
+# Profiling Instructions
+The following subsections describe the code for profilling cpu and memory. The code takes input the file "ElephantsDream.mp4" (which is hardcoded in app.py) and performs the video processing on it.
+
 ## Profiling CPU Usage
 The tool cProfile is used to profile the CPU execution cycles of our code. The cProfiler creats an .pstats file which can be visuallized using the tool gprof2dot. The code for this process is:
 

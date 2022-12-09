@@ -1,10 +1,9 @@
 import moviepy.editor as mp
 import moviepy.video as mp_vid
 from memory_profiler import profile
-import os
-import json
 import random
 
+FILE_NAME = "ElephantsDream"
 BUCKET_NAME = 'ffmpeg-profile'
 LOGO = 'logo'
 RESIZE = 128*2
@@ -102,5 +101,5 @@ def pipeline(filename):
 
 
 if __name__ == "__main__":
-    event = {"filename":"ElephantsDream"}
+    event = {"filename":FILE_NAME}
     pipeline(event["filename"])
