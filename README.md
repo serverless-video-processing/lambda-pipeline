@@ -1,5 +1,8 @@
 # serverless-video-processing
 
+Slides : https://drive.google.com/file/d/1KgJ_BsiZNoO_pjYIXktzsM2yhA5kcqs3/view?usp=drive_link
+Paper: https://drive.google.com/file/d/1j8zuLIPx7Dq8PoC02ySF8df5r7erfTJs/view?usp=drive_link
+
 ### Instructions to create and upload Docker image to AWS ECR
 1. Retrieve an authentication token and authenticate your Docker client to your registry.
 Use the AWS CLI:
